@@ -39,11 +39,11 @@ class swiftLogoLayer {
         bezierPath.addCurveToPoint(CGPointMake(107.96, 96.25), controlPoint1: CGPointMake(110.12, 89.84), controlPoint2: CGPointMake(107.96, 96.25))
         bezierPath.addCurveToPoint(CGPointMake(96.14, 86.59), controlPoint1: CGPointMake(107.96, 96.25), controlPoint2: CGPointMake(105.27, 87.59))
         bezierPath.closePath()
-        
         //create a shape layer
         layer.path = bezierPath.CGPath
         let bounds = CGPathGetBoundingBox(layer.path)
         
         layer.bounds = bounds
-        return layer    }
+        return layer
+        }
 }

@@ -13,13 +13,23 @@ class ViewController: UIViewController,UINavigationControllerDelegate {
      var logo :CAShapeLayer!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.delegate=self
         logo = swiftLogoLayer.logoLayer()
         self.view.backgroundColor = UIColor.darkGrayColor()
+//        self.view.backgroundColor=UIColor.whiteColor()
         //        logo.position = CGPointMake(self.view.center.x, self.view.center.y+30)
         logo.position = CGPoint(x: view.layer.bounds.size.width/2,
                                 y: view.layer.bounds.size.height/2+30+30)
         logo.fillColor=UIColor.whiteColor().CGColor
+//        logo.fillColor=UIColor.clearColor().CGColor
+//        logo.strokeColor=UIColor.blackColor().CGColor
+//        logo.lineWidth = 3.0
+//        logo.borderColor=UIColor.yellowColor().CGColor
+//        logo.borderWidth = 5.0
+     /*   let newLayer = swiftLogoLayer.logoLayer()
+        newLayer.position = CGPoint.init(x: view.layer.bounds.size.width/2+20, y: view.layer.bounds.size.height/2+30+30)
+        self.view.layer.mask = newLayer */
         self.view.layer.addSublayer(logo)
         addGesture()
     }

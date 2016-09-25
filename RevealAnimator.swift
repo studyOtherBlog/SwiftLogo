@@ -28,11 +28,12 @@ class RevealAnimator: NSObject,UIViewControllerAnimatedTransitioning {
         
         }
     func pushAnimation(transitionContext: UIViewControllerContextTransitioning) -> Void {
+//        print(transitionContext.presentationStyle())
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! ViewController
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! SecondViewController
         //添加跳转上下文的容器中目标视图的view
         transitionContext.containerView()!.addSubview(toVC.view)
-        
+//        transitionContext.containerView()?.insertSubview(toVC.view, atIndex: 0)
         let animation = CABasicAnimation(keyPath: "transform")
         animation.fromValue = NSValue.init(CATransform3D: CATransform3DIdentity)
         
@@ -50,9 +51,9 @@ class RevealAnimator: NSObject,UIViewControllerAnimatedTransitioning {
 
         animation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseIn)
         //同时给遮罩和logo添加变形动画
-//        toVC.maskLayer.addAnimation(animation, forKey: nil)
+        toVC.maskLayer.addAnimation(animation, forKey: nil)
         fromVC.logo.addAnimation(animation, forKey: nil)
-        
+//        fromVC.view.hidden=true
         //配置逐渐显示的图层动画
         let fadeInAnimation = CABasicAnimation.init(keyPath: "opacity")
         fadeInAnimation.fromValue = 0.0
@@ -85,6 +86,7 @@ class RevealAnimator: NSObject,UIViewControllerAnimatedTransitioning {
             context.completeTransition(!context.transitionWasCancelled())
             //重置logo
             let fromVC = context.viewControllerForKey(UITransitionContextFromViewControllerKey) as!ViewController
+//            fromVC.view.hidden=false
             fromVC.logo.removeAllAnimations()
             storedContext=nil
          }
